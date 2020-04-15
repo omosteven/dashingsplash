@@ -38,12 +38,76 @@
             background-color: rgb(0, 0, 70);
             box-shadow: 0px 0px 2px white;
         }
+        
+        .box {
+            position: fixed;
+            z-index: 10;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .box:target {
+            display: flex;
+        }
+        
+        .modal {
+            width: 28em;
+            height: 12em;
+            border-radius: 0.5em;
+            color: rgb(0, 0, 90);
+            background: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 1px 5px rgb(0, 0, 90), -5px -5px 15px white;
+        }
+        
+        .details {
+            text-align: center;
+        }
+        
+        .btn-box {
+            border: 1px solid hsla(0, 0%, 100%, .4);
+            border-radius: 0.2em;
+            color: white;
+            background-color: rgb(0, 0, 90);
+            font-size: 1.1em;
+            height: 1.5em;
+            width: 5em;
+            transition: .2s;
+            cursor: pointer;
+        }
+        
+        .btn-box:hover,
+        .btn-box:focus {
+            border-color: hsla(0, 0%, 100%, .6);
+            -webkit-transform: translateY(-.2rem);
+            transform: translateY(-.2rem);
+        }
     </style>
 </head>
 
 <body>
+    <div class="box" id="register">
+        <div class="modal">
 
-    <div class="limiter">
+            <div class="details" style="margin-bottom: -1.5em;">
+                <div class="title" style="font-weight: bold;margin-top: 0.5em;">Validate Code</div>
+                <p class="description" style="margin-top:1.5em;font-weight:bold;font-size:0.8em;width:25em;margin-left:4em">You must validate your code here before you can register</p>
+                <div class="wrap-input100 validate-input" style="width:20em;margin-left:4em;">
+                    <div style="color:rgb(0, 0, 90);font-size:0.9em;float:left;margin-bottom:0.5em">Registration Code</div>
+
+                    <input class="input100" type="text" name="regcode" placeholder="Registration Code" style="border-radius: 0.2em;height:2em;box-shadow:  2px 2px 5px rgb(0,0,90), -5px -5px 5px white;color:black;">
+                </div>
+            </div>
+
+            <div style="text-align: center;"><button class="btn-box" onclick="validateCode()">Continue</button></div>
+
+        </div>
+    </div>
+    <div class="limiter" id="limiter" style="display: none;">
         <div class="container-login100" style="background-color:rgb(0, 0, 70)">
             <div class="wrap-login100 d" style="margin-top:-2em;width:28em;background-color: rgb(0, 0, 90);">
                 <form class="login100-form validate-form">
@@ -98,7 +162,12 @@
 
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
-
+    <script>
+        function validateCode() {
+            document.getElementById("limiter").style.display = "initial";
+            document.getElementById("register").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
