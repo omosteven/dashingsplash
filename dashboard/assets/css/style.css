@@ -123,13 +123,14 @@ strong {
 .dropdown-item:active,
 .dropdown-item:focus,
 .dropdown-item:hover {
-    background-color: rgb(0, 0, 90);
-    color: white
+    background-color: white;
+    color: rgb(0, 0, 90);
+    font-weight: bold;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
-    background-color: #323a4e;
+    background-color: rgb(0, 0, 90);
     color: white
 }
 
@@ -202,7 +203,7 @@ hr {
 }
 
 .text-primary {
-    color: rgb(0, 0, 90)
+    color: white
 }
 
 .text-warning {
@@ -210,7 +211,9 @@ hr {
 }
 
 .text-success {
-    color: #02a499
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .text-info {
@@ -941,7 +944,7 @@ dt {
 }
 
 .notification-list .dropdown-item-text {
-    color: rgb(0, 0, 90)
+    color: white
 }
 
 .notification-list .noti-icon {
@@ -987,7 +990,7 @@ dt {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: 600;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .notification-list .notify-item .notify-details span {
@@ -1175,8 +1178,8 @@ button:focus {
 .open>.dropdown-toggle.btn-primary,
 .show>.btn-outline-primary.dropdown-toggle,
 .show>.btn-primary.dropdown-toggle {
-    background-color: #4e5ccf;
-    border: 1px solid #4e5ccf
+    background-color: rgba(0, 0, 90, 0.8);
+    border: 1px solid rgba(0, 0, 90, 0.8)
 }
 
 .btn-outline-primary.focus,
