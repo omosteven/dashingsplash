@@ -12,7 +12,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
@@ -54,8 +54,8 @@
         }
         
         .modal {
-            width: 28em;
-            height: 12em;
+            width: 18em;
+            height: 15em;
             border-radius: 0.5em;
             color: rgb(0, 0, 90);
             background: white;
@@ -80,24 +80,111 @@
             cursor: pointer;
         }
         
+        .btn-click {
+            font-size: 1.2em;
+        }
+        
+        .btn-click:hover,
+        .btn-click:focus {
+            font-size: 1.21em
+        }
+        
         .btn-box:hover,
         .btn-box:focus {
             border-color: hsla(0, 0%, 100%, .6);
             -webkit-transform: translateY(-.2rem);
             transform: translateY(-.2rem);
         }
+        
+        .description {
+            width: 26em;
+        }
+        
+        @keyframes color-me-in {
+            /* You could think of as "step 1" */
+            0% {
+                background: rgba(0, 0, 70, 0.15);
+            }
+            25% {
+                background: rgba(0, 0, 70, 0.25);
+            }
+            50% {
+                background: rgba(0, 0, 70, 0.45);
+            }
+            75% {
+                background: rgba(0, 0, 70, 0.60);
+            }
+            /* You could think of as "step 2" */
+            100% {
+                background: rgba(0, 0, 70, 0.75);
+            }
+        }
+        
+        .animate-body {
+            position: relative;
+            animation: color-me-in 2s;
+            background-color: rgb(0, 0, 70);
+        }
+        
+        @keyframes color-me-in1 {
+            0% {
+                background: rgba(0, 0, 90, 0.15);
+            }
+            25% {
+                background: rgba(0, 0, 90, 0.25);
+            }
+            50% {
+                background: rgba(0, 0, 90, 0.45);
+            }
+            75% {
+                background: rgba(0, 0, 90, 0.60);
+            }
+            100% {
+                background: rgba(0, 0, 90, 0.75);
+            }
+        }
+        
+        .animate-body1 {
+            position: relative;
+            animation: color-me-in1 2s;
+            background-color: rgb(0, 0, 90);
+        }
+        
+        @keyframes color-me-in2 {
+            0% {
+                background: rgba(0, 0, 90, 0.75);
+            }
+            25% {
+                background: rgba(0, 0, 90, 0.60);
+            }
+            50% {
+                background: rgba(0, 0, 90, 0.45);
+            }
+            75% {
+                background: rgba(0, 0, 90, 0.25);
+            }
+            100% {
+                background: rgba(0, 0, 90, 0.15);
+            }
+        }
+        
+        .animate-body2 {
+            position: relative;
+            animation: color-me-in2 1s;
+            background-color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
 <body>
     <div class="box" id="register">
-        <div class="modal">
+        <div class="modal" id="modal1">
 
-            <div class="details" style="margin-bottom: -1.5em;">
-                <div class="title" style="font-weight: bold;margin-top: 0.5em;">Validate Code</div>
-                <p class="description" style="margin-top:1.5em;font-weight:bold;font-size:0.8em;width:25em;margin-left:4em">You must validate your code here before you can register</p>
-                <div class="wrap-input100 validate-input" style="width:20em;margin-left:4em;">
-                    <div style="color:rgb(0, 0, 90);font-size:0.9em;float:left;margin-bottom:0.5em">Registration Code</div>
+            <div class="details" style="margin-bottom: -1.5em;" id="modal1">
+                <div class="title" style="font-weight: bold;margin-top: 0.5em;font-size:1em;text-align:center">Validate Code</div>
+                <p class="description" style="margin-top:1.5em;font-weight:bold;font-size:0.8em;margin-left:1em">You must validate your code here before you can register</p>
+                <div class="wrap-input100 validate-input" style="width:15em;margin-left:1.5em;">
+                    <div style="color:rgb(0, 0, 90);font-size:0.9em;float:left;margin-bottom:0.5em;font-weight: bold;">Registration Code</div>
 
                     <input class="input100" type="text" name="regcode" placeholder="Registration Code" style="border-radius: 0.2em;height:2em;box-shadow:  2px 2px 5px rgb(0,0,90), -5px -5px 5px white;color:black;">
                 </div>
@@ -105,11 +192,43 @@
 
             <div style="text-align: center;"><button class="btn-box" onclick="validateCode()">Continue</button></div>
 
+            <p class="description" style="text-align:center;margin-top:1.5em;font-weight:bold;font-size:0.8em;margin-left:-2em;cursor: pointer;" onclick="requestForCode()">Don't have a code?</p>
+
+
+        </div>
+
+        <div class="modal" style="display: none;" id="modal2">
+
+            <div class="details" style="margin-bottom: 2.5em;">
+                <div class="title" style="font-weight: bold;margin-top: 0.5em;font-size:1em;text-align:center">Request for Code</div>
+                <p class="description" style="margin-top:1.5em;font-weight:bold;font-size:0.8em;margin-left:1em;width:20em">Thanks for your interest, please kindly click on any of the whatapp buttons below to reach to us</p>
+                <div class="wrap-input100s" style="width:15em;margin-left:1.5em;margin-top:1.1em">
+                    <a href="https://wa.me/08134323066?text=Welcome%20to%20Dashing%20spash.%20%To%20request%20for%20code%2C%20kindly%20contact%20us%here" class="btn-click" style="">
+                        <div style="color:rgb(0, 0, 90);font-size:0.9em;float:left;margin-bottom:0.5em;font-weight: bold;">Click me</div>
+
+                        <div><i class="fa fa-whatsapp" style="height:2em;float: left;color:black;font-size:2em;margin-top:-0.2em"></i></div>
+                    </a>
+                </div>
+                <div class="wrap-input100s" style="width:15em;margin-left:1.5em;margin-top:1.1em">
+                    <a href="https://wa.me/08134323066?text=Welcome%20to%20Dashing%20spash.%20%To%20request%20for%20code%2C%20kindly%20contact%20us%here" class="btn-click" style="">
+
+                        <div style="color:rgb(0, 0, 90);font-size:0.9em;float:left;margin-bottom:0.5em;font-weight: bold;">Click me</div>
+
+                        <div><i class="fa fa-whatsapp" style="height:2em;float: left;color:black;font-size:2em;margin-top:-0.2em"></i></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- <div><button class="btn-box" style="margin-left:-2.5em" onclick="validateCode()">Close</button></div> -->
+
+            <p class="description" style="text-align:center;margin-top:1.5em;font-weight:bold;font-size:0.8em;margin-left:-4.8em;cursor: pointer;" onclick="gotCode()">Got code?</p>
+
+
         </div>
     </div>
-    <div class="limiter" id="limiter" style="display: none;">
-        <div class="container-login100" style="background-color:rgb(0, 0, 70)">
-            <div class="wrap-login100 d" style="margin-top:-2em;width:28em;background-color: rgb(0, 0, 90);">
+    <div class="" id="limiter" style="display: none;">
+        <div class="container-login100">
+            <div class="wrap-login100 d" id="limiter1" style="margin-top:-2em;width:28em;">
                 <form class="login100-form validate-form">
                     <!-- <span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
@@ -164,8 +283,33 @@
     <script src="js/main.js"></script>
     <script>
         function validateCode() {
-            document.getElementById("limiter").style.display = "initial";
+
+            document.getElementById("limiter").style.display = "block";
+
             document.getElementById("register").style.display = "none";
+
+            document.getElementById("limiter").classList.add("animate-body");
+
+            document.getElementById("limiter1").classList.add("animate-body1");
+
+        }
+
+        function requestForCode() {
+
+            document.getElementById("modal1").style.display = "none";
+
+            document.getElementById("modal2").style.display = "block";
+
+            document.getElementById("modal2").classList.add("animate-body2");
+        }
+
+        function gotCode() {
+
+            document.getElementById("modal2").style.display = "none";
+
+            document.getElementById("modal1").style.display = "block";
+
+            document.getElementById("modal1").classList.add("animate-body2");
         }
     </script>
 </body>
